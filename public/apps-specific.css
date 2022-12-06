@@ -1,0 +1,103 @@
+/*==========================| .Store specific |==========================*/
+.store-openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #e43d40 !important;
+  padding: 10px 15px;
+  border: none;
+  color: rgb(28, 105, 99);
+  border-radius: 15px !important;
+}
+
+.store-openbtn:hover {
+  color: white !important;
+  background-color: #e43d40;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/*Product Cards*/
+.store-product-card {
+  border-radius: 25px !important;
+  transition: 0.5s;
+  background: white !important;
+  color: #e43d40;
+  display: none; /* Hidden by default */
+}
+
+.store-product-card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.store-product-card-tag {
+  margin-top: -10px;
+  max-width: 100px !important;
+  height: auto !important;
+  background: #e43d40;
+  color: white;
+  border-bottom-left-radius: 0px !important;
+}
+
+.store-product-card-specs {
+  font-size: 10px;
+}
+
+.store-product-card-buttons {
+  background: white !important;
+  color: #e43d40 !important;
+  font-size: 18px;
+  transition: 0.5s;
+}
+
+.products-center {
+  /*width: 90vw;*/
+  margin: 0 auto;
+  max-width: 1170px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 2rem;
+}
+
+.topselling-center {
+  /*width: 90vw;*/
+  margin: 0 auto;
+  max-width: 1170px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 2rem;
+}
+
+/*wallet manager, discount coupons, shopping bag and checkout*/ /*Custom - Scrollbar for #chechout-items-list*/
+#chechout-items-list {
+  max-height: 300px !important;
+  overflow-y: auto !important;
+}
+
+/* width */
+#chechout-items-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#chechout-items-list::-webkit-scrollbar-track {
+  background: #fabec0;
+  border-radius: 50rem;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+/* Handle */
+#chechout-items-list::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+/* The "show" class is added to the filtered elements */
+.show-card {
+  display: block;
+}
+
+/*==========================| .Store specific |==========================*/

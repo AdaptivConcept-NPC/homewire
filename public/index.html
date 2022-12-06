@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!--fontawesome-->
+    <script src="https://kit.fontawesome.com/a2763a58b1.js"></script>
+    <!--Manifest-->
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <title>Homewire.app&trade; &copy; 2021 | Welcome to the latest online shopping and social community platform for
+    your household and overall lifestyle needs</title>
+
+    <style>
+        *{
+            outline: 0 !important;
+        }
+        .form-control {
+            outline: 0 !important;
+        }
+    </style>
+</head>
+<body class="m-0 p-0 color-switch minimal-v-scroll" id="login-page-body">
+    <small class="titles text-left m-0" id="curtain-title-switching" hidden>.app</small>
+    <!-- Modals -->
+    <!--User Sign In-->
+    <div class="modal fade shadow" id="signin-modal" tabindex="-1" role="dialog" aria-labelledby="signin-modal-title"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content text-whitez shadow-lg color-switch"
+                style="border-radius: 25px 25px 0 25px; background: rgb(28,105,99)" id="signin-modal-card">
+                <div class="fixed-lw-logo-mesh-div-bg titles">
+                    <div class="modal-header border-0">
+                        <h2 class="modal-title titles" id="signin-modal-title">Homewire.app&trade; | Client Sign In</h2>
+                        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body border-0">
+                        <div class="login-notification text-center" id="output-notif"></div>
+    
+                        <form class="mt-4 px-4 py-2 shadow-lg" style="border-radius: 25px">
+                            <div class="form-group">
+                                <label for="login-username" class="form-label">User ID/Email</label>
+                                <input type="text" class="form-control rounded-pill" id="login-username" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password" class="form-label">Password</label>
+                                <input type="password" class="form-control rounded-pill" id="login-password" required />
+                            </div>
+                            <a class="text-decoration-none text-white">Forgot Password?</a>
+                        </form>
+                        <button onclick="userSignin(document.getElementById('login-username').value, document.getElementById('login-password').value)" type="button"
+                            class="btn btn-block bg-white shadow-lg rounded-pill my-4 py-3 titles btn-reaction"
+                            id="sign-in-btn">Sign In <span class="fas fa-arrow-right"></span></button>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-danger rounded-pill shadow btn-reaction"
+                            data-dismiss="modal"><span class="fas fa-times"></span> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of User Sign In-->
+    <!--User Registration-->
+    <div class="modal fade shadow minimal-v-scroll" id="signup-modal" tabindex="-2" role="dialog"
+        aria-labelledby="signup-modal-title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content shadow-lg color-switch"
+                style="border-radius: 25px 25px 0 25px; background: rgb(28,105,99)" id="signup-modal-card">
+                <div class="fixed-lw-logo-mesh-div-bg titles">
+                    <div class="modal-header border-0">
+                        <h2 class="modal-title titles" id="signup-modal-title">Homewire.app&trade; | Client Sign Up
+                            (Registration)</h2>
+                        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body border-0">
+                        <div class="container-fluid" style="border-radius: 25px">
+                            <div class="row color-switch text-white" >
+                                <div class="col-sm-4">
+                                    <img id="home-page-logos" src="media/general/icons/simple-brand-banner-bgtransp.png" alt="logo"
+                                        class="img-fluid color-switch h-auto" style="border-radius: 0 0 25px 25px">
+                                    <p class="my-4">
+                                        As a valued member of our community, you will benefit from
+                                        our reward service.
+                                    </p>
+                                    <h4 class="mt-4">Members will get the following benefits:</h4>
+                                    <ul class="">
+                                        <li class="">10% Checkout Discount for all purchases</li>
+                                        <li class="">Free monthly car-wash service</li>
+                                        <li class="">Guaranteed monthly discount coupons</li>
+                                        <li class="">Content curatorship access on .Social and .Blog</li>
+                                    </ul>
+                                    <p>
+                                        As the community grows, so will the benefits. Curators will be liable to compensation for contrinutions
+                                        that create monitory gains on the website. For more details on Contributorshipm please follow the link below.
+                                    </p>
+                                </div>
+                                <div class="col-sm-8 shadow bg-whitez text-dark" style="border-radius: 0 25px 25px 25px">
+                                    <form class="mt-4 px-4 py-2 shadow-lg text-white" style="border-radius: 25px">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="signup-form-username">Create your username</label>
+                                                    <input type="text" class="form-control rounded-pill" id="signup-form-username"
+                                                        placeholder="Username">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="signup-form-name">Your Name</label>
+                                                    <input type="text" class="form-control rounded-pill" id="signup-form-name"
+                                                        placeholder="Name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="signup-form-surname">Your Surname</label>
+                                                    <input type="text" class="form-control rounded-pill" id="signup-form-surname"
+                                                        placeholder="Surname">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="signup-form-email">Your Email address</label>
+                                                    <input type="email" class="form-control rounded-pill" id="signup-form-email" placeholder="Email address">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="signup-form-phone">Your Contact Number</label>
+                                                    <input type="phone" class="form-control rounded-pill" id="signup-form-phone" placeholder="Mobile Contact Number">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="signup-form-idnumber">Your SA ID Number or Passport Number</label>
+                                                    <input type="text" class="form-control rounded-pill" id="signup-form-idnumber"
+                                                        placeholder="ID Number or Passport Number">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="signup-form-dob">Your Date of Birth</label>
+                                                    <input type="text" class="form-control rounded-pill" id="signup-form-dob" placeholder="Date of Birth">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="signup-form-gender">Your Gender</label>
+                                                    <select class="custom-select rounded-pill" id="signup-form-gender" placeholder="Gender">
+                                                        <option value="Female">Female</option>
+                                                        <option value="Male">Male</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="signup-form-citizenship">Your Citizenship</label>
+                                                    <select class="custom-select rounded-pill" id="signup-form-citizenship" placeholder="Citizenship">
+                                                        <option value='South Africa'>South Africa</option>
+                                                        <option value='Afghanistan'>Afghanistan</option>
+                                                        <option value='Akrotiri'>Akrotiri</option>
+                                                        <option value='Albania'>Albania</option>
+                                                        <option value='Algeria'>Algeria</option>
+                                                        <option value='American Samoa'>American Samoa</option>
+                                                        <option value='Andorra'>Andorra</option>
+                                                        <option value='Angola'>Angola</option>
+                                                        <option value='Anguilla'>Anguilla</option>
+                                                        <option value='Antarctica'>Antarctica</option>
+                                                        <option value='Antigua and Barbuda'>Antigua and Barbuda</option>
+                                                        <option value='Argentina'>Argentina</option>
+                                                        <option value='Armenia'>Armenia</option>
+                                                        <option value='Aruba'>Aruba</option>
+                                                        <option value='Ashmore and Cartier Islands'>Ashmore and Cartier Islands</option>
+                                                        <option value='Australia'>Australia</option>
+                                                        <option value='Austria'>Austria</option>
+                                                        <option value='Azerbaijan'>Azerbaijan</option>
+                                                        <option value='Bahamas, The'>Bahamas, The</option>
+                                                        <option value='Bahrain'>Bahrain</option>
+                                                        <option value='Bangladesh'>Bangladesh</option>
+                                                        <option value='Barbados'>Barbados</option>
+                                                        <option value='Bassas da India'>Bassas da India</option>
+                                                        <option value='Belarus'>Belarus</option>
+                                                        <option value='Belgium'>Belgium</option>
+                                                        <option value='Belize'>Belize</option>
+                                                        <option value='Benin'>Benin</option>
+                                                        <option value='Bermuda'>Bermuda</option>
+                                                        <option value='Bhutan'>Bhutan</option>
+                                                        <option value='Bolivia'>Bolivia</option>
+                                                        <option value='Bosnia and Herzegovina'>Bosnia and Herzegovina</option>
+                                                        <option value='Botswana'>Botswana</option>
+                                                        <option value='Bouvet Island'>Bouvet Island</option>
+                                                        <option value='Brazil'>Brazil</option>
+                                                        <option value='British Indian Ocean Territory'>British Indian Ocean Territory</option>
+                                                        <option value='British Virgin Islands'>British Virgin Islands</option>
+                                                        <option value='Brunei'>Brunei</option>
+                                                        <option value='Bulgaria'>Bulgaria</option>
+                                                        <option value='Burkina Faso'>Burkina Faso</option>
+                                                        <option value='Burma'>Burma</option>
+                                                        <option value='Burundi'>Burundi</option>
+                                                        <option value='Cambodia'>Cambodia</option>
+                                                        <option value='Cameroon'>Cameroon</option>
+                                                        <option value='Canada'>Canada</option>
+                                                        <option value='Cape Verde'>Cape Verde</option>
+                                                        <option value='Cayman Islands'>Cayman Islands</option>
+                                                        <option value='Central African Republic'>Central African Republic</option>
+                                                        <option value='Chad'>Chad</option>
+                                                        <option value='Chile'>Chile</option>
+                                                        <option value='China'>China</option>
+                                                        <option value='Christmas Island'>Christmas Island</option>
+                                                        <option value='Clipperton Island'>Clipperton Island</option>
+                                                        <option value='Cocos (Keeling) Islands'>Cocos (Keeling) Islands</option>
+                                                        <option value='Colombia'>Colombia</option>
+                                                        <option value='Comoros'>Comoros</option>
+                                                        <option value='Congo, Democratic Republic of the'>Congo, Democratic Republic of the</option>
+                                                        <option value='Congo, Republic of the'>Congo, Republic of the</option>
+                                                        <option value='Cook Islands'>Cook Islands</option>
+                                                        <option value='Coral Sea Islands'>Coral Sea Islands</option>
+                                                        <option value='Costa Rica'>Costa Rica</option>
+                                                        <option value='Cote d' Ivoire'>Cote d'Ivoire</option>
+                                                        <option value='Croatia'>Croatia</option>
+                                                        <option value='Cuba'>Cuba</option>
+                                                        <option value='Cyprus'>Cyprus</option>
+                                                        <option value='Czech Republic'>Czech Republic</option>
+                                                        <option value='Denmark'>Denmark</option>
+                                                        <option value='Dhekelia'>Dhekelia</option>
+                                                        <option value='Djibouti'>Djibouti</option>
+                                                        <option value='Dominica'>Dominica</option>
+                                                        <option value='Dominican Republic'>Dominican Republic</option>
+                                                        <option value='Ecuador'>Ecuador</option>
+                                                        <option value='Egypt'>Egypt</option>
+                                                        <option value='El Salvador'>El Salvador</option>
+                                                        <option value='Equatorial Guinea'>Equatorial Guinea</option>
+                                                        <option value='Eritrea'>Eritrea</option>
+                                                        <option value='Estonia'>Estonia</option>
+                                                        <option value='Ethiopia'>Ethiopia</option>
+                                                        <option value='Europa Island'>Europa Island</option>
+                                                        <option value='Falkland Islands (Islas Malvinas)'>Falkland Islands (Islas Malvinas)</option>
+                                                        <option value='Faroe Islands'>Faroe Islands</option>
+                                                        <option value='Fiji'>Fiji</option>
+                                                        <option value='Finland'>Finland</option>
+                                                        <option value='France'>France</option>
+                                                        <option value='French Guiana'>French Guiana</option>
+                                                        <option value='French Polynesia'>French Polynesia</option>
+                                                        <option value='French Southern and Antarctic Lands'>French Southern and Antarctic Lands</option>
+                                                        <option value='Gabon'>Gabon</option>
+                                                        <option value='Gambia, The'>Gambia, The</option>
+                                                        <option value='Gaza Strip'>Gaza Strip</option>
+                                                        <option value='Georgia'>Georgia</option>
+                                                        <option value='Germany'>Germany</option>
+                                                        <option value='Ghana'>Ghana</option>
+                                                        <option value='Gibraltar'>Gibraltar</option>
+                                                        <option value='Glorioso Islands'>Glorioso Islands</option>
+                                                        <option value='Greece'>Greece</option>
+                                                        <option value='Greenland'>Greenland</option>
+                                                        <option value='Grenada'>Grenada</option>
+                                                        <option value='Guadeloupe'>Guadeloupe</option>
+                                                        <option value='Guam'>Guam</option>
+                                                        <option value='Guatemala'>Guatemala</option>
+                                                        <option value='Guernsey'>Guernsey</option>
+                                                        <option value='Guinea'>Guinea</option>
+                                                        <option value='Guinea-Bissau'>Guinea-Bissau</option>
+                                                        <option value='Guyana'>Guyana</option>
+                                                        <option value='Haiti'>Haiti</option>
+                                                        <option value='Heard Island and McDonald Islands'>Heard Island and McDonald Islands</option>
+                                                        <option value='Holy See (Vatican City)'>Holy See (Vatican City)</option>
+                                                        <option value='Honduras'>Honduras</option>
+                                                        <option value='Hong Kong'>Hong Kong</option>
+                                                        <option value='Hungary'>Hungary</option>
+                                                        <option value='Iceland'>Iceland</option>
+                                                        <option value='India'>India</option>
+                                                        <option value='Indonesia'>Indonesia</option>
+                                                        <option value='Iran'>Iran</option>
+                                                        <option value='Iraq'>Iraq</option>
+                                                        <option value='Ireland'>Ireland</option>
+                                                        <option value='Isle of Man'>Isle of Man</option>
+                                                        <option value='Israel'>Israel</option>
+                                                        <option value='Italy'>Italy</option>
+                                                        <option value='Jamaica'>Jamaica</option>
+                                                        <option value='Jan Mayen'>Jan Mayen</option>
+                                                        <option value='Japan'>Japan</option>
+                                                        <option value='Jersey'>Jersey</option>
+                                                        <option value='Jordan'>Jordan</option>
+                                                        <option value='Juan de Nova Island'>Juan de Nova Island</option>
+                                                        <option value='Kazakhstan'>Kazakhstan</option>
+                                                        <option value='Kenya'>Kenya</option>
+                                                        <option value='Kiribati'>Kiribati</option>
+                                                        <option value='Korea, North'>Korea, North</option>
+                                                        <option value='Korea, South'>Korea, South</option>
+                                                        <option value='Kuwait'>Kuwait</option>
+                                                        <option value='Kyrgyzstan'>Kyrgyzstan</option>
+                                                        <option value='Laos'>Laos</option>
+                                                        <option value='Latvia'>Latvia</option>
+                                                        <option value='Lebanon'>Lebanon</option>
+                                                        <option value='Lesotho'>Lesotho</option>
+                                                        <option value='Liberia'>Liberia</option>
+                                                        <option value='Libya'>Libya</option>
+                                                        <option value='Liechtenstein'>Liechtenstein</option>
+                                                        <option value='Lithuania'>Lithuania</option>
+                                                        <option value='Luxembourg'>Luxembourg</option>
+                                                        <option value='Macau'>Macau</option>
+                                                        <option value='Macedonia'>Macedonia</option>
+                                                        <option value='Madagascar'>Madagascar</option>
+                                                        <option value='Malawi'>Malawi</option>
+                                                        <option value='Malaysia'>Malaysia</option>
+                                                        <option value='Maldives'>Maldives</option>
+                                                        <option value='Mali'>Mali</option>
+                                                        <option value='Malta'>Malta</option>
+                                                        <option value='Marshall Islands'>Marshall Islands</option>
+                                                        <option value='Martinique'>Martinique</option>
+                                                        <option value='Mauritania'>Mauritania</option>
+                                                        <option value='Mauritius'>Mauritius</option>
+                                                        <option value='Mayotte'>Mayotte</option>
+                                                        <option value='Mexico'>Mexico</option>
+                                                        <option value='Micronesia, Federated States of'>Micronesia, Federated States of</option>
+                                                        <option value='Moldova'>Moldova</option>
+                                                        <option value='Monaco'>Monaco</option>
+                                                        <option value='Mongolia'>Mongolia</option>
+                                                        <option value='Montserrat'>Montserrat</option>
+                                                        <option value='Morocco'>Morocco</option>
+                                                        <option value='Mozambique'>Mozambique</option>
+                                                        <option value='Namibia'>Namibia</option>
+                                                        <option value='Nauru'>Nauru</option>
+                                                        <option value='Navassa Island'>Navassa Island</option>
+                                                        <option value='Nepal'>Nepal</option>
+                                                        <option value='Netherlands'>Netherlands</option>
+                                                        <option value='Netherlands Antilles'>Netherlands Antilles</option>
+                                                        <option value='New Caledonia'>New Caledonia</option>
+                                                        <option value='New Zealand'>New Zealand</option>
+                                                        <option value='Nicaragua'>Nicaragua</option>
+                                                        <option value='Niger'>Niger</option>
+                                                        <option value='Nigeria'>Nigeria</option>
+                                                        <option value='Niue'>Niue</option>
+                                                        <option value='Norfolk Island'>Norfolk Island</option>
+                                                        <option value='Northern Mariana Islands'>Northern Mariana Islands</option>
+                                                        <option value='Norway'>Norway</option>
+                                                        <option value='Oman'>Oman</option>
+                                                        <option value='Pakistan'>Pakistan</option>
+                                                        <option value='Palau'>Palau</option>
+                                                        <option value='Panama'>Panama</option>
+                                                        <option value='Papua New Guinea'>Papua New Guinea</option>
+                                                        <option value='Paracel Islands'>Paracel Islands</option>
+                                                        <option value='Paraguay'>Paraguay</option>
+                                                        <option value='Peru'>Peru</option>
+                                                        <option value='Philippines'>Philippines</option>
+                                                        <option value='Pitcairn Islands'>Pitcairn Islands</option>
+                                                        <option value='Poland'>Poland</option>
+                                                        <option value='Portugal'>Portugal</option>
+                                                        <option value='Puerto Rico'>Puerto Rico</option>
+                                                        <option value='Qatar'>Qatar</option>
+                                                        <option value='Reunion'>Reunion</option>
+                                                        <option value='Romania'>Romania</option>
+                                                        <option value='Russia'>Russia</option>
+                                                        <option value='Rwanda'>Rwanda</option>
+                                                        <option value='Saint Helena'>Saint Helena</option>
+                                                        <option value='Saint Kitts and Nevis'>Saint Kitts and Nevis</option>
+                                                        <option value='Saint Lucia'>Saint Lucia</option>
+                                                        <option value='Saint Pierre and Miquelon'>Saint Pierre and Miquelon</option>
+                                                        <option value='Saint Vincent and the Grenadines'>Saint Vincent and the Grenadines</option>
+                                                        <option value='Samoa'>Samoa</option>
+                                                        <option value='San Marino'>San Marino</option>
+                                                        <option value='Sao Tome and Principe'>Sao Tome and Principe</option>
+                                                        <option value='Saudi Arabia'>Saudi Arabia</option>
+                                                        <option value='Senegal'>Senegal</option>
+                                                        <option value='Serbia and Montenegro'>Serbia and Montenegro</option>
+                                                        <option value='Seychelles'>Seychelles</option>
+                                                        <option value='Sierra Leone'>Sierra Leone</option>
+                                                        <option value='Singapore'>Singapore</option>
+                                                        <option value='Slovakia'>Slovakia</option>
+                                                        <option value='Slovenia'>Slovenia</option>
+                                                        <option value='Solomon Islands'>Solomon Islands</option>
+                                                        <option value='Somalia'>Somalia</option>
+                                                        <option value='South Georgia and the South Sandwich Islands'>South Georgia and the South Sandwich Islands</option>
+                                                        <option value='Spain'>Spain</option>
+                                                        <option value='Spratly Islands'>Spratly Islands</option>
+                                                        <option value='Sri Lanka'>Sri Lanka</option>
+                                                        <option value='Sudan'>Sudan</option>
+                                                        <option value='Suriname'>Suriname</option>
+                                                        <option value='Svalbard'>Svalbard</option>
+                                                        <option value='Swaziland'>Swaziland</option>
+                                                        <option value='Sweden'>Sweden</option>
+                                                        <option value='Switzerland'>Switzerland</option>
+                                                        <option value='Syria'>Syria</option>
+                                                        <option value='Taiwan'>Taiwan</option>
+                                                        <option value='Tajikistan'>Tajikistan</option>
+                                                        <option value='Tanzania'>Tanzania</option>
+                                                        <option value='Thailand'>Thailand</option>
+                                                        <option value='Timor-Leste'>Timor-Leste</option>
+                                                        <option value='Togo'>Togo</option>
+                                                        <option value='Tokelau'>Tokelau</option>
+                                                        <option value='Tonga'>Tonga</option>
+                                                        <option value='Trinidad and Tobago'>Trinidad and Tobago</option>
+                                                        <option value='Tromelin Island'>Tromelin Island</option>
+                                                        <option value='Tunisia'>Tunisia</option>
+                                                        <option value='Turkey'>Turkey</option>
+                                                        <option value='Turkmenistan'>Turkmenistan</option>
+                                                        <option value='Turks and Caicos Islands'>Turks and Caicos Islands</option>
+                                                        <option value='Tuvalu'>Tuvalu</option>
+                                                        <option value='Uganda'>Uganda</option>
+                                                        <option value='Ukraine'>Ukraine</option>
+                                                        <option value='United Arab Emirates'>United Arab Emirates</option>
+                                                        <option value='United Kingdom'>United Kingdom</option>
+                                                        <option value='United States'>United States</option>
+                                                        <option value='Uruguay'>Uruguay</option>
+                                                        <option value='Uzbekistan'>Uzbekistan</option>
+                                                        <option value='Vanuatu'>Vanuatu</option>
+                                                        <option value='Venezuela'>Venezuela</option>
+                                                        <option value='Vietnam'>Vietnam</option>
+                                                        <option value='Virgin Islands'>Virgin Islands</option>
+                                                        <option value='Wake Island'>Wake Island</option>
+                                                        <option value='Wallis and Futuna'>Wallis and Futuna</option>
+                                                        <option value='West Bank'>West Bank</option>
+                                                        <option value='Western Sahara'>Western Sahara</option>
+                                                        <option value='Yemen'>Yemen</option>
+                                                        <option value='Zambia'>Zambia</option>
+                                                        <option value='Zimbabwe'>Zimbabwe</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="signup-form-address">Your Physical Address</label>
+                                                    <textarea type="address" class="form-control rounded" rows="10" id="signup-form-address" placeholder="Physical Address"></textarea>
+                                                </div>
+                                                <hr class="bg-white mt-4">
+                                                <div class="form-group">
+                                                    <label for="signup-form-password">Your New Password</label>
+                                                    <input type="password" class="form-control rounded-pill" id="signup-form-password"
+                                                        placeholder="Create a password">
+                                                </div>
+                                    
+                                                <div class="form-group">
+                                                    <label for="signup-form-conf-password">Please Confirm your Password</label>
+                                                    <input type="password" class="form-control rounded-pill" id="signup-form-conf-password"
+                                                        placeholder="Repeat the password above">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    
+                                        <!--<button class="btn rounded-pill btn-block product-card-buttons shadow-lg mb-4" id="signup-form-btn-submit"> Send</button>-->
+                                    
+                                    </form>
+                                    <button onclick="registerUser()" type="button" class="btn btn-block bg-white shadow-lg rounded-pill my-4 py-3 titles btn-reaction"
+                                        id="sign-in-btn"><span class="fas fa-file-signature"></span> Sign Up <span
+                                            class="fas fa-arrow-right"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Introdutory video-->
+                        <div class="mt-4 p-0" style="overflow: hidden; border-radius: 25px">
+                            <!--<video id="signuppromovideo" style="width: 100%; height:100%" autoplay muted>
+                                <source src="../app/media/general/video/promos/signup/LMM-Promo-6.mp4" type="video/mp4">
+                                <source src="../app/media/general/video/promos/signup/LMM%20Promo%206.ogg" type="video/ogg">
+                                Your browser does not support HTML video.
+                            </video>-->
+                        </div>
+                        <div class="text-right">
+                            <button class="btn rounded-pill bg-white shadowz" onclick="muteunmute()"><span
+                                    class="fas fa-volume-mute"></span></button>
+                            <button class="btn rounded-pill bg-white shadowz" onclick="playPause()"><span class="fas fa-pause"></span></button>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-danger rounded-pill shadow btn-reaction"
+                            data-dismiss="modal"><span class="fas fa-times"></span> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of User Registration-->
+    <!--End of Modals--->
+    
+    <div class="fixed- lw-logo-mesh-div-bg minimal-v-scroll" style="overflow-x: hidden">
+        <!--Social Quick Links-->
+        <div class="social-icons-container shadow container text-center d-flex justify-content-end align-items-center color-switch mr-4"
+            id="social-bar">
+            <div class="mx-4" style="font-size: 20px; color: #fff">
+                Connect on socials
+            </div>
+            <ul class="fixed-lw-logo-mesh-div-bg list-group list-group-horizontal text-center">
+                <li class="list-group-item bg-transparent border-0"><a href=""><i class="fab fa-instagram"></i></a></li>
+                <li class="list-group-item bg-transparent border-0"><a href=""><i class="fab fa-facebook"></i></a></li>
+                <li class="list-group-item bg-transparent border-0"><a href=""><i class="fab fa-twitter"></i></a></li>
+            </ul>
+        </div>
+        <!--End of Social Quick Links-->
+    
+        <div class="container-fluid m-0 p-0" id="login-page-top-container">
+            <div class="h-100">
+                <!--Welcome message container-->
+                <div class="text-center color-switch welcome-msg-container text-white minimal-v-scroll" id="welcome-msg">
+                    <div class="fixed-lw-logo-mesh-div-bg p-4 h-100">
+                        <div id="navbar" class="navbar color-switch text-center shadow mb-4 p-0" style="border-radius: 25px;">
+                            <div class="sticky-top fixed- lw-logo-mesh-div-bg w-100">
+                                <div class="text-center mx-4">
+                                    <img id="home-page-logo" src="media/general/icons/simple-brand-banner-bgtransp.png" alt="logo icon-logo.png"
+                                        class="img-fluid color-switch shadow my-4"
+                                        style="border-radius: 25px;background: rgb(28,105,99); max-height: 180px">
+                                </div>
+                                <br>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-right" aria-controls="navbar-right" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="fas fa-bars text-white"></span>
+                                </button>
+                                <div id="navbar-right" class="collapse show navbar-collapse color-switch p-4 shadow"
+                                    style="border-radius: 25px;">
+                                    <a class="btn rounded-pill btn-reaction btn-white active" href="#home">Home</a>
+                                    <a class="btn rounded-pill btn-reaction btn-white" href="#about">About Us</a>
+                                    <a class="btn rounded-pill btn-reaction btn-white" href="#about">Products and
+                                        Services</a>
+                                    <a class="btn rounded-pill btn-reaction btn-white" href="#contact">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <h1 class="comfortaa-font">Welcome to Homewire.app</h1>
+                        <p class="mx-4" style="font-size: 20px">The latest online shopping and social community platform for
+                            your household and overall lifestyle needs.</p>
+                        <p>Keep scrolling for more</p>
+                        <i class="fas fa-caret-down"></i>
+    
+                        <!--<div class="row mx-4">
+                                <div class="col-md-6 text-right p-2">
+                                    <button class="btn btn-light btn-block rounded-pill titles p-4 shadow btn-reaction" style="font-size: 2vh" type="button" data-toggle="modal" data-target="#signin-modal">
+                                        <span class="fas fa-sign-in-alt"></span> Sign In
+                                    </button>
+                                </div>
+                                <div class="col-md-6 text-left p-2">
+                                    <button class="btn btn-light btn-block rounded-pill titles p-4 shadow btn-reaction" style="font-size: 2vh" type="button" data-toggle="modal" data-target="#signup-modal">
+                                        <span class="fas fa-file-signature"></span> Sign Up
+                                    </button>
+                                </div>
+                            </div>-->
+    
+                        <div class="container color-switch shadow" style="border-radius: 25px;">
+                            <h2 class="comfortaa-font">Sign into your account</h2>
+                            <div class="login-notification text-center" id="output-notif"></div>
+    
+                            <form class="mt-4 px-4 py-2" style="border-radius: 25px">
+                                <div class="form-group">
+                                    <label for="wp-login-username" class="form-label">User ID/Email</label>
+                                    <input type="text" class="form-control rounded-pill text-center" id="wp-login-username"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="wp-login-username" class="form-label">Password</label>
+                                    <input type="password" class="form-control rounded-pill text-center"
+                                        id="wp-login-password" required />
+                                </div>
+                                <a class="text-decoration-none text-white">Forgot Password?</a>
+                            </form>
+                            <button onclick="userSignin(document.getElementById('wp-login-username').value, document.getElementById('wp-login-password').value)" type="button"
+                                class="btn bg-white shadow-lg rounded-pill my-4 py-3 titles btn-reaction"
+                                id="sign-in-btn">Sign In <span class="fas fa-arrow-right"></span></button>
+                        </div>
+                    </div>
+                </div>
+                <!--End of Welcome message container-->
+    
+                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel"
+                    style="margin-top: 10vh">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="media/general/images/UI/carousel/cleaning-products.jpg" class="d-block w-100"
+                                alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="media/general/images/UI/carousel/house-cleaning-supplies-checklist-700x360.jpg"
+                                class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="media/general/images/UI/carousel/household-cleaning-products-500x500.jpg"
+                                class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+    
+                <h1 class="comfortaa-font my-4 text-center"><strong> you can find on Homewire.app </strong></h1>
+                <div class="row align-items-center">
+                    <!--<div class="col" id="card-app" style="background: rgb(28,105,99); height: 100%">
+                            <div class="fixed-lw-logo-mesh-div-bg h-100 m-0">
+                                <div class="text-center text-white shadow p-4 m-4" style="backgroundz: rgb(28,105,99); border-radius: 25px">
+                                    <p class="titles text-left m-0 text-right" style="font-size: 20px">Homewire.app&trade;</p>
+                                    <hr class="bg-white">
+                                    <h1 class="titles text-left m-0 h-links text-truncate" id="login-nav-to-app">.app<span class="fas fa-hand-pointer" style="font-size: 10px!important;transform: rotate(-40deg)"></span></h1>
+                                    <img src="media/general/icons/icon-logo.png" class="img-fluid" alt="Loading">
+                                    <p class="p-0 m-0" style="font-size: 4px">Homewire.app&trade; &copy; Adaptiv Media Concept 2021</p>
+                                </div>
+                            </div>
+                        </div>-->
+                    <div class="col p-0" id="card-store" style="background: #E43D40; height: 100%;">
+                        <div class="fixed-lw-logo-mesh-div-bg h-100 m-0 p-0">
+                            <div class="text-center text-white shadow p-4 m-4"
+                                style="backgroundz: #E43D40; border-radius: 25px">
+                                <p class="titles text-left m-0 text-right" style="font-size: 20px">Homewire.app&trade;</p>
+                                <hr style="background: white;">
+                                <h1 class="titles text-left m-0 h-links text-truncate" id="login-nav-to-store" style="cursor: pointer;">.Store<span
+                                        class="fas fa-hand-pointer"
+                                        style="font-size: 10px!important;transform: rotate(-40deg)"></span></h1>
+                                <img src="media/general/icons/icon-logo.png" class="img-fluid" alt="Loading">
+                                <p class="p-0 m-0" style="font-size: 4px">Homewire.app&trade; &copy; Adaptiv Media Concept
+                                    2021</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col p-0" id="card-social" style="background: #D3C02F; height: 100%">
+                        <div class="fixed-lg-logo-mesh-div-bg h-100 m-0">
+                            <div class="text-center shadow p-4 m-4"
+                                style="backgroundz: #D3C02F; border-radius: 25px; color: #104210;">
+                                <p class="titles text-left m-0 text-right" style="font-size: 20px">Homewire.app&trade;</p>
+                                <hr style="background: white;">
+                                <h1 class="titles text-left m-0 h-links text-truncate" id="login-nav-to-social" style="cursor: pointer;">.Social<span
+                                        class="fas fa-hand-pointer"
+                                        style="font-size: 10px!important;transform: rotate(-40deg)"></span></h1>
+                                <small hidden>(Dropping Soon)</small>
+                                <img src="media/general/icons/icon-logo.png" class="img-fluid" alt="Loading">
+                                <p class="p-0 m-0" style="font-size: 4px">Homewire.app&trade; &copy; Adaptiv Media Concept
+                                    2021</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col p-0" id="card-blog" style="background: orange; height: 100%">
+                        <div class="fixed-ld-logo-mesh-div-bg h-100 m-0">
+                            <div class="text-center shadow p-4 m-4" style="backgroundz: orange; border-radius: 25px">
+                                <p class="titles text-left m-0 text-right" style="font-size: 20px; color: #202020">
+                                    Homewire.app&trade;</p>
+                                <hr style="background: white;">
+                                <h1 class="titles text-left m-0 h-links text-truncate" id="login-nav-to-blog" style="cursor: pointer;">.Blog<span
+                                        class="fas fa-hand-pointer"
+                                        style="font-size: 10px!important;transform: rotate(-40deg)"></span></h1>
+                                <img src="media/general/icons/icon-logo.png" class="img-fluid" alt="Loading">
+                                <p class="p-0 m-0" style="font-size: 4px; color: #202020">Homewire.app&trade; &copy; Adaptiv
+                                    Media Concept 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col p-0" id="card-admarket" style="background: #202020; min-height: 100%">
+                        <div class="fixed-lp-logo-mesh-div-bg h-100 m-0">
+                            <div class="text-center text-white shadow-lg p-4 m-4"
+                                style="backgroundz: #202020; border-radius: 25px">
+                                <p class="titles text-left m-0 text-right" style="font-size: 20px; color: rebeccapurple">
+                                    Homewire.app&trade;</p>
+                                <hr style="background: white;">
+                                <h1 class="titles text-left m-0 h-links text-truncate" id="login-nav-to-admarket" style="cursor: pointer;">
+                                    .adMarket<span class="fas fa-hand-pointer"
+                                        style="font-size: 10px!important;transform: rotate(-40deg)"></span></h1>
+                                <img src="media/general/icons/icon-logo.png" class="img-fluid" alt="Loading">
+                                <p class="p-0 m-0" style="font-size: 4px;">Homewire.app&trade; &copy; Adaptiv Media Concept
+                                    2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row align-items-start">
+                    <!--<div class="col">
+    
+                        </div>-->
+                    <div class="col-md-8 p-4 m-4 color-switch minimal-v-scroll" style="overflow-y:auto"
+                        id="login-page-signup-msg">
+                        <h1 class="titles">No need to stress about an account yet, just create one when you are ready!!!
+                            <span class="fas fa-thumbs-up"></span></h1>
+                        <p>
+    
+                            You can explore our platform freely and benefit from our
+                            online shopping experience and our social community tools and other resources. <br>
+                            Get affordable products suited to your pocket and get them delivered to you.
+                            On Homewire.app, you have the power to <strong>Inspire and get inspired</strong>.
+                        </p>
+                        <p class="titles text-right" style="font-size: 10px">- Homewire.app &copy; Adaptiv Media Concept
+                            2021</p>
+    
+                        <div class="mb-4">
+                            <button id="signin-modal-button" class="btn btn-light btn-block rounded-pill titles mb-4 p-4 shadow btn-reaction"
+                                style="font-size: 2vh" type="button" data-toggle="modal" data-target="#signin-modal">
+                                <span class="fas fa-sign-in-alt"></span> Sign In
+                            </button>
+                            <button id="register-modal-button" class="btn btn-light btn-block rounded-pill titles mt-4 p-4 shadow btn-reaction"
+                                style="font-size: 2vh" type="button" data-toggle="modal" data-target="#signup-modal">
+                                <span class="fas fa-file-signature"></span> Sign Up
+                            </button>
+                        </div>
+    
+                        <!--Community Rewards-->
+                        <div class="mb-4 shadow color-switch" style="border-radius: 25px">
+                            <div class="p-2 fixed-llg-logo-mesh-div-bg">
+                                <div class="border-left ml-2 pl-2 fixed-llg-logo-mesh-div-bg"
+                                    style="border-top-left-radius: 25px">
+                                    <h1 class="text-center comfortaa-font">Benefit by being a part of the Community</h1>
+                                    <div class="text-center">
+                                        <img src="media/general/icons/simple-brand-banner-bgtransp.png"
+                                            class="img-fluid text-center" style="max-width: 200px">
+                                    </div>
+                                    <h3 class="titles" data-toggle="collapse" href="#community-rewards-descr" role="button"
+                                        aria-expanded="false" aria-controls="community-rewards-descr"><span
+                                            class="fas fa-gift"></span> Community Rewards <span
+                                            class="fas fa-hand-pointer tap-indicator"
+                                            style="font-size: 15px; transform: rotate(-30deg); color: white"></span></h3>
+                                    <p id="community-rewards-descr" class="collapse show multi-toggle">
+                                        Our dear prospective customer. We offer to you a great community and store loyalty
+                                        programme called the Community Rewards. <br><br>
+                                        Every time you and other community members do something important on Homewire.app,
+                                        you all contribute to the progress bar that fills up
+                                        to a set rewards goal and when this happens, everyone in the Community will receive
+                                        this reward. <br><br>
+                                        The Community Rewards Value gets better and better the more levels we get to. Sign
+                                        up today to see what this is about and let us reach this
+                                        discount goals together.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End of Community Rewards-->
+    
+                        <!--Membership and contibutorship-->
+                        <div class="mb-4 shadow color-switch p-4" style="border-radius: 25px">
+                            <h1 class="text-center comfortaa-font">Become a member or a contributor</h1>
+    
+                            <div style="background: #202020;border-radius: 25px!important;"
+                                class="my-4 border border-white border-3 shadow-lg text-center">
+                                <div class="fixed-lw-logo-mesh-div-bg">
+                                    <img src="media/general/icons/simple-brand-banner-bgtransp.png" class="img-fluid mb-4"
+                                        alt="">
+                                    <h2 class="p-4" style="color: white;margin-top: -84px"><span
+                                            class="fas fa-hands-helping"></span><br> Become a Member Today!!!</h2>
+                                </div>
+                            </div>
+    
+                            <div class="m-4">
+                                <p>You can become a memeber to receive exlusive benefits such as a discount on all
+                                    purchases, access to .Blog contributoship, free member goodie-packages, etc...</p>
+                            </div>
+                        </div>
+                        <!--End of Membership and contibutorship-->
+    
+                        <div class="text-center fixed-bottom SHADOW color-switch" id="index-page-footer"
+                            style="height: 100px;">
+                            <div class="fixed-lw-logo-mesh-div-bg px-4 h-100" style="font-size: 8px;padding-top: 45px">
+                                <p class="comfortaa-font"><strong>Homewire.app &copy; 2020. Crafted by
+                                        AdaptivMediaConcept.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col p-4 mx-0 text-center minimal-v-scroll" style="height: 100%; overflow-y:auto">
+                        <div class="container-fluid m-0 p-0" id="login-page-bottom-container">
+                            <div class="" style="width: 100%; heightz: 50vh!important;overflow: hidden">
+                                <h2 class="comfortaa-font mt-4"><strong>Social Media</strong></h2>
+                                <p>Follow us on socials for extra content, resources and updates.</p>
+                                <h5><i class="fab fa-twitter"></i> Twitter</h5>
+                                <h5><i class="fab fa-facebook"></i> Facebook</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="container-fluid" style="margin-bottom: 150px;">
+                    <div class="row my-4" id="footer-grid">
+                        <div class="col-md-4">
+                            <h4 class="titles py-2">More from us</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent rounded-pill"
+                                    style="border-bottom-left-radius: 0 !important;">
+                                    About Us</li>
+                                <li class="list-group-item bg-transparent rounded-pill"
+                                    style="border-bottom-left-radius: 0 !important;">
+                                    Contact Us</li>
+                                <li class="list-group-item bg-transparent rounded-pill"
+                                    style="border-bottom-left-radius: 0 !important;">
+                                    Donate your points to charity</li>
+    
+                            </ul>
+                        </div>
+    
+                        <div class="col-md-4 border-white border-left border-right">
+                            <h4 class="titles py-2">Important Info</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent rounded-pill"
+                                    style="border-bottom-left-radius: 0 !important;">
+                                    <button class="btn btn-danger rounded-pill"><span
+                                            class="fas fa-virus mr-2"></span>Coronvirus
+                                        Updates</button>
+                                </li>
+                                <li class="list-group-item bg-transparent rounded-pill"
+                                    style="border-bottom-left-radius: 0 !important;">
+                                    Terms of use</li>
+                                <li class="list-group-item bg-transparent rounded-pill"
+                                    style="border-bottom-left-radius: 0 !important;">
+                                    Privacy policy</li>
+                                <li class="list-group-item bg-transparent rounded-pill"
+                                    style="border-bottom-left-radius: 0 !important;">
+                                    AdMarket public posting policy</li>
+                                <li class="list-group-item bg-transparent rounded-pill"
+                                    style="border-bottom-left-radius: 0 !important;">
+                                    Refund policy</li>
+                            </ul>
+                        </div>
+    
+                        <div class="col-md-4">
+                            <h4 class="titles py-2">Order and Collect</h4>
+                            <p>We can be found here:</p>
+                            <iframe class="rounded-3"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.4750917790557!2d27.881837207161364!3d-26.246239995479634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95a7261884eacd%3A0xc2b73167b663eae3!2sWashday%20laundry%20Service!5e0!3m2!1sen!2sza!4v1611818393816!5m2!1sen!2sza"
+                                width="100%" height="400px" frameborder="0" style="border:0;" allowfullscreen=""
+                                aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*document.getElementById('login-nav-to-app').addEventListener("click", function() {
+            window.location.href = "../routing/router.php?grt=app";
+            //../routing/router.php?route_target=store
+        });*/
+        document.getElementById('login-nav-to-store').addEventListener("click", function () {
+            //window.location.href = "routing/router.php?grt=store";
+            window.location.href = "../app.html?page=app&grt=store";
+        });
+        /*document.getElementById('login-nav-to-social').addEventListener("click", function() {
+            window.location.href = "../routing/router.php?grt=social";
+        });*/
+        document.getElementById('login-nav-to-blog').addEventListener("click", function () {
+            //window.location.href = "routing/router.php?grt=blog";
+            window.location.href = "../app.html?page=blog&grt=blog";
+        });
+        document.getElementById('login-nav-to-admarket').addEventListener("click", function () {
+            //window.location.href = "routing/router.php?grt=admarket";
+            window.location.href = "../app.html?page=admarket&grt=admarket";
+        });
+
+        // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+            /*window.onscroll = function () {
+                scrollFunction()
+            };*/
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                    //document.getElementById("navbar").style.padding = "30px 10px";
+                    document.getElementById("home-page-logo").style.height = "50px";
+                    //document.getElementById("welcome-msg").style.marginLeft = "-101%";
+                    document.getElementById("social-bar").style.marginLeft = "0px";
+                    document.getElementById("index-page-footer").style.marginBottom = "0px";
+
+                } else {
+                    //document.getElementById("navbar").style.padding = "30vh 10px 20px 10px";
+                    document.getElementById("home-page-logo").style.height = "50vh";
+                    //document.getElementById("welcome-msg").style.marginLeft = "0";
+                    document.getElementById("social-bar").style.marginLeft = "-1001px";
+                    document.getElementById("index-page-footer").style.marginBottom = "-1001px";
+                }
+            }
+    </script>
+
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="/js/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="/js/popper.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

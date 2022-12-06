@@ -1,0 +1,17 @@
+{
+    "name": "Homewire.app",
+    "short_name": "Online Shopping",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#1C6963",
+    "scope": ".",
+    "theme_color": "#1C6963",
+    "description": "We are an online store and social community selling cleaning products and sharing lifestyle resources",
+    "icons": [
+        {
+            "src": "media/general/icons/icon-logo.png",
+            "sizes": "1000x1000",
+            "type": "image/png"
+        }
+    ]
+}

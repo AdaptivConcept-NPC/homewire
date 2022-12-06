@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="payment.css">
+    <title>Digital Payment</title>
+</head>
+<body>
+    <div class="container-fluid bg-dark text-white">
+        <h1>Implementing the Yoco API</h1>
+        <div class="container">
+            <div class="inline">
+                <h3>Inline Method</h3>
+                <form>
+                    <div class="yoco_inline"></div>
+                    <button type="submit" class="btn btn-primary my-5">Pay R50.00</button>
+                </form>
+                <p></p>
+            </div>
+            <div class="popup">
+                <h3>Popup Method</h3>
+                <button class="btn btn-primary my-5">Pay R50.00</button>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="payment.js"></script>
+</body>
+</html>
